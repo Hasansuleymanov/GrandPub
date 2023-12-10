@@ -1,0 +1,85 @@
+﻿@model HomeVM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/beefd5b891.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+    <header id="header">
+        <div class="top-head">
+            <div class="container-lg container-md container-sm">
+                <div class="d-flex align-items-center justify-content-between">
+                    @foreach (var item in Model.MainConfigurations)
+                    {
+                        <div class="top-head-left d-flex align-items-center">
+                            <div class="left-phone">
+                                <i class="fa-solid fa-phone text-white "></i>
+                                <span class="">@item.PhoneNumber</span>
+                            </div>
+                            <div class="left-social">
+                                <a href="@item.InstaUrl">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="@item.FaceUrl">
+                                    <i class="fa-brands fa-square-facebook face"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="top-head-right">
+                            <div class="left-location">
+                                <i class="fa-solid fa-location-dot text-white"></i>
+                                <span class="">@item.Address</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="bottom-head my-2">
+            <div class="container-lg container-md container-sm">
+                <div class="logo-part d-flex justify-content-center align-items-center">
+                    <a href="#"><img src="assets/images/result.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer id="footer">
+        <div class="footer-main">
+            <div class="container-lg container-md container-sm">
+                @foreach(var item in Model.MainConfigurations)
+                {
+                    <div class="footer-text">
+                        <strong>BİZİ İZLƏYİN</strong>
+                        <br>
+                        <a href="@item.InstaUrl">
+                            <i class="fa-brands fa-instagram"></i>grandpub
+                        </a>
+                        <br>
+                        <a href="@item.FaceUrl">
+                            <i class="fa-brands fa-square-facebook face"></i>grandpub
+                        </a>
+
+                    </div>
+                }
+               
+            </div>
+        </div>
+        <div class="footer-last">
+            <div class="container-lg container-md container-sm">
+                <div class="last-text">
+                    <p>2023 © GRANDPUB&GRILL</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

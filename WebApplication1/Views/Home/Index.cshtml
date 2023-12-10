@@ -1,0 +1,66 @@
+﻿@model HomeVM
+
+
+<section id="banner">
+    <div class="banner-main">
+        <div class="banner-text text-center text-white">
+            <h4>THE GRAND PUB & GRILL</h4>
+            <h4>ƏSAS MENYU</h4>
+        </div>
+    </div>
+
+</section>
+<section id="menu" class="mt-4 mb-5">
+    <div class="container">
+        <div class="menu-categories">
+            <ul class="d-flex justify-content-center align-items-center flex-wrap">
+                @{
+                    int i = 0;
+                }
+                @foreach (var item in Model.Categories)
+                {
+                    var activeClass = item.Slug == Model.Slug || (Model.Slug=="" && i==0) ? "active" : "";
+                    <li>
+                        <a asp-controller="Home" asp-action="index" asp-route-slug="@item.Slug" class="category-item @activeClass">
+                            @item.Name
+                        </a>
+                    </li>
+                    i++;
+                }
+            </ul>
+        </div>
+        <div class="menu-content">
+            <div class="row d-flex flex-wrap align-items-center">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-lg-4 mt-3 col-md-6 col-xl-3">
+                        <div class="meal-main">
+                            <div class="meal-photo">
+                                <img src="@item.ThumbnailUrl" class="img-fluid" alt="">
+                            </div>
+                            <div class="meal-description mt-3">
+                                <div class="meal-title">
+                                    @if (item.Size != "0")
+                                    {
+                                        <h5>@item.Name (@item.Size)</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5>@item.Name</h5>
+                                    }
+                                </div>
+                                <div class="meal-ingredient">
+                                    <p>@item.Description</p>
+                                </div>
+                                <div class="meal-price">
+                                    <span class="value">@item.Price</span>
+                                    <span class="currency">₼</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

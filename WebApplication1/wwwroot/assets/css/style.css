@@ -1,0 +1,244 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header .top-head {
+    background-color: #775544;
+    padding: 15px 5px;
+}
+
+    #header .top-head i {
+        font-size: 12px;
+        color: white;
+    }
+
+    #header .top-head .top-head-left span {
+        font-size: 15px;
+        color: white;
+        margin-left: 10px;
+    }
+
+    #header .top-head .top-head-left .left-social {
+        margin-left: 15px;
+    }
+
+        #header .top-head .top-head-left .left-social a {
+            font-style: normal;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        #header .top-head .top-head-left .left-social i {
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+    #header .top-head .top-head-right .left-location span {
+        color: white;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+#header .bottom-head .logo-part {
+    background-color: white;
+}
+
+    #header .bottom-head .logo-part a {
+        text-decoration: none;
+        text-align: center;
+    }
+
+    #header .bottom-head .logo-part img {
+        width: 40%;
+    }
+
+#banner .banner-main {
+    position: relative;
+    background-image: url(../images/pubBg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+}
+
+    #banner .banner-main::before {
+        width: 100%;
+        height: 100%;
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+        background-color: black;
+    }
+
+    #banner .banner-main .banner-text {
+        position: absolute;
+        transform: translate(-48%, -45%);
+        top: 53%;
+        left: 50%;
+        z-index: 3;
+    }
+
+        #banner .banner-main .banner-text h4 {
+            font-size: 35px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+#menu .menu-categories ul {
+    display: flex;
+    list-style: none;
+}
+
+    #menu .menu-categories ul li a {
+        text-decoration: none;
+        color: #775544;
+        font-size: 14px;
+        padding: 6px 10px;
+        margin-left: 5px;
+        transition: 0.4s all ease-in-out;
+    }
+    #menu .menu-categories ul li{
+        margin-top:10px;
+    }
+    #menu .menu-categories ul li a.active {
+        background-color: #EFDBB2;
+        border-radius: 50px;
+    }
+
+    #menu .menu-categories ul a:hover {
+        background-color: #EFDBB2;
+        border-radius: 50px;
+    }
+
+#menu .menu-content .meal-main .meal-photo img {
+    height: 300px;
+}
+
+#menu .menu-content .meal-main .meal-description {
+    position: relative;
+}
+
+    #menu .menu-content .meal-main .meal-description .meal-ingredient p {
+        height: 150px;
+    }
+
+    #menu .menu-content .meal-main .meal-description .meal-price {
+        position: absolute;
+        font-size: 20px;
+        font-weight: bold;
+        top: 100px;
+    }
+
+#footer .footer-main {
+    position: relative;
+    width: 100%;
+    height: 27vh;
+    background-color: #775544;
+}
+
+    #footer .footer-main .footer-text {
+        position: absolute;
+        top: 32%;
+        left: 10%;
+        color: white;
+    }
+
+        #footer .footer-main .footer-text strong {
+            margin-left: 35px;
+            font-weight: normal;
+            font-size: 18px;
+        }
+
+        #footer .footer-main .footer-text a {
+            text-decoration: none;
+            color: white;
+        }
+
+            #footer .footer-main .footer-text a i {
+                margin-right: 20px;
+                margin-top: 10px;
+            }
+
+#footer .footer-last {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    padding: 29px
+}
+
+    #footer .footer-last .last-text {
+        position: absolute;
+        margin: 0;
+        top: 25%;
+    }
+
+        #footer .footer-last .last-text p {
+            color: white;
+            margin-left: 30px;
+        }
+
+@media (max-width: 576px) {
+    #header .top-head i {
+        font-size: 12px;
+    }
+
+    #header .top-head .top-head-left span {
+        font-size: 13px;
+        margin-left: 0px;
+    }
+
+    #header .top-head .top-head-left .left-social {
+        margin-left: 5px;
+    }
+
+        #header .top-head .top-head-left .left-social a {
+            padding: 2px;
+        }
+
+        #header .top-head .top-head-left .left-social i {
+            font-size: 12px;
+        }
+
+    #header .top-head .top-head-right .left-location span {
+        font-size: 13px;
+        margin-left: 3px;
+    }
+
+    #banner .banner-main .banner-text {
+        transform: translate(-48%, -45%);
+    }
+
+    #menu .menu-content .meal-main {
+        text-align: center;
+    }
+
+        #menu .menu-content .meal-main .meal-photo {
+            width: 100%;
+        }
+
+        #menu .menu-content .meal-main .meal-price {
+            left: 43%;
+        }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    #menu .menu-content .meal-main {
+        text-align: center;
+    }
+
+        #menu .menu-content .meal-main .meal-photo {
+            width: 100%;
+        }
+
+        #menu .menu-content .meal-main .meal-price {
+            left: 43%;
+        }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    #banner .banner-main .banner-text {
+        transform: translate(-48%, -45%);
+    }
+}
+/*# sourceMappingURL=style.css.map */
