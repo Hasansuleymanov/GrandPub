@@ -1,8 +1,17 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/restoranAdmin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Admin Panel</h1>
+<div class="d-flex">
+    <div class="card m-1" style="max-width:18rem">
+        <div class="card-body h4"><a class="d-block p-5" asp-area="restoranAdmin" asp-controller="Category" asp-action="Index">Kateqoriyalar</a> </div>
+    </div>
+    <div class="card m-1" style="max-width:18rem">
+        <div class="card-body">
+            <a class="d-block p-5 h4" asp-area="restoranAdmin" asp-controller="Product" asp-action="Index">Məhsullar</a>
+        </div>
+    </div>
+</div>
 
