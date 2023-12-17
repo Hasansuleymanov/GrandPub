@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Services;
 
@@ -12,10 +13,13 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
     public class ProductController : Controller
     {
         private readonly ProductServices _productService;
+        private readonly CategoryServices _categoryService;
 
-        public ProductController(ProductServices productService)
+
+        public ProductController(ProductServices productService, CategoryServices categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         // GET: ProductController
@@ -37,13 +41,16 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
         // GET: ProductController/Create
         public ActionResult Create()
         {
+            // Assuming you have a method to get the list of categories
+            var categories = _categoryService.GetAllCategories();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name");
             return View();
         }
 
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,Size,CategoryId,Price,ThumbnailUrl")] Product product, IFormFile PhotoUrl)
+        public async Task<IActionResult> Create([Bind("Name,Description,Size,CategoryId,Price,ThumbnailUrl")] Product product, IFormFile? PhotoUrl)
         {
             try
             {
@@ -66,6 +73,8 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
                     _productService.Add(product);
                     return RedirectToAction(nameof(Index));
                 }
+                var categories = _categoryService.GetAllCategories();
+                ViewBag.Categories = new SelectList(categories, "Id", "Name");
 
                 return View(product);
             }
@@ -88,6 +97,8 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
             {
                 return NotFound();
             }
+            var categories = _categoryService.GetAllCategories();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name");
 
             return View(product);
         }
@@ -120,7 +131,8 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
                     _productService.Update(product);
                     return RedirectToAction(nameof(Index));
                 }
-
+                var categories = _categoryService.GetAllCategories();
+                ViewBag.Categories = new SelectList(categories, "Id", "Name");
                 return View(product);
             }
             catch (Exception ex)
@@ -132,13 +144,14 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
         }
 
         // GET: ProductController/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             return View(_productService.GetByID(id));
         }
 
         // POST: ProductController/Delete/5
-        [HttpDelete, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirm(int id)
         {
