@@ -32,12 +32,12 @@ namespace Services
             Category? findCategory = _context.Categories.FirstOrDefault(c => c.Slug == slug);
             if (findCategory != null && !string.IsNullOrWhiteSpace(slug))
             {
-                return _context.Products.Where(c => c.CategoryId == findCategory.Id).ToList();
+                return _context.Products.Where(c => c.CategoryId == findCategory.Id && !c.IsDeleted).ToList();
             }
             else
             {
                 Category defaultCategory = _context.Categories.First(c => c.IsDefault);
-                return _context.Products.Where(c=>c.CategoryId==defaultCategory.Id).ToList();
+                return _context.Products.Where(c=>c.CategoryId==defaultCategory.Id && !c.IsDeleted).ToList();
             }
         }
 
