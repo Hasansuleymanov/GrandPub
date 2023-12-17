@@ -107,7 +107,7 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Size,CategoryId,Price,ThumbnailUrl")] Product product, IFormFile PhotoUrl)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Size,CategoryId,Price,ThumbnailUrl")] Product product, IFormFile? PhotoUrl)
         {
             try
             {
