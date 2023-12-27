@@ -22,7 +22,7 @@ namespace Services
         }
         public Category? GetByID(int id)
         {
-            return _context.Categories.FirstOrDefault(c => c.Id == id);
+            return _context.Categories.FirstOrDefault(c => c.Id == id && !c.IsDeleted);
         }
 
         public int GetCategoryCount()

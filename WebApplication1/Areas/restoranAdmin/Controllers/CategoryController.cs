@@ -94,6 +94,7 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
         }
 
         // GET: CategoryController/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             return View(_categoryService.GetByID(id));
@@ -101,13 +102,13 @@ namespace WebMVC.Areas.restoranAdmin.Controllers
 
         // POST: CategoryController/Delete/5
         [HttpDelete, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirm(int id)
         {
             try
             {
                     Category foundCategory = _categoryService.GetByID(id);
                     _categoryService.Delete(foundCategory);
-
                     return RedirectToAction(nameof(Index));
             }
             catch
